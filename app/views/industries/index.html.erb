@@ -1,0 +1,14 @@
+<h1>Index of Industry Types</h1>
+
+<% if @industries.any? %>
+  <ul>
+    <% @industries.each do |industry| %>
+      <li><%= link_to industry.name, industry_path(industry) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p><h3>No Industries Currently in Index</h3></p>
+<% end %>
+
+
+<%= link_to 'Add a New Industry', new_industry_path %>
