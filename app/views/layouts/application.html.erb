@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>YellowPagesClone</title>
+  <title>Yellow Pages Clone</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", industries_path %></li>
+        <li><%= link_to "Add Industry", new_industry_path %></li>
+      </ul>
+    </nav>
+    <%= yield %>
+  </div>
 </body>
 </html>

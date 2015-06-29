@@ -1,0 +1,11 @@
+<%= render "layouts/errors", :object => @business %>
+
+<%= form_for [@industry, @business] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <%= f.label :address %>
+  <%= f.text_field :address %><br>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %><br>
+  <button class="btn btn-success" type="submit">Create Business</button>
+<% end %>

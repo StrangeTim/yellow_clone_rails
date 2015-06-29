@@ -4,3 +4,30 @@
 <%= link_to "Delete #{@industry.name}", industry_path(@industry),
                                   :data => {:confirm => "Confirm?",
                                   :method => "delete"} %>
+
+<%if @industry.businesses.any? %>
+  <h3>Businesses in this Industry:</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width='200px'>Business Name:</th>
+        <th>Phone Number:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @industry.businesses.each do |business| %>
+        <tr>
+
+          <td><%= link_to business.name, industry_business_path(@industry,business)%></td>
+          <td><%= business.phone %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h3>There are no businesses in this category yet.</h3>
+<% end %>
+
+<br>
+<p><%= link_to "Add Business", new_industry_business_path(@industry) %></p>
