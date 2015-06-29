@@ -20,6 +20,21 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
   end
 
+  def edit
+    @industry = Industry.find(params[:industry_id])
+    @business = Business.find(params[:id])
+  end
+
+  def update
+    @business = Business.find(params[:id])
+    @industry = Industry.find(params[:industry_id])
+    if @business.update(business_params)
+      redirect_to industry_business_path(@industry, @business)
+    else
+      render :edit
+    end
+  end
+
   private
   def business_params
     params.require(:business).permit(:name, :address, :phone)
